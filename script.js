@@ -5,10 +5,10 @@ window.addEventListener('load', () => {
     const equals = document.querySelector('.equals')
     const answer = document.querySelector('.answer')
     const operationMap = {
-        '+': (value1, value2) => Number(value1) + Number(value2),
-        '-': (value1, value2) => Number(value1) - Number(value2),
-        '*': (value1, value2) => Number(value1) * Number(value2),
-        '/': (value1, value2) => Number(value1) / Number(value2),
+        '+': (value1, value2) => value1 + value2,
+        '-': (value1, value2) => value1 - value2,
+        '*': (value1, value2) => value1 * value2,
+        '/': (value1, value2) => value1 / value2,
     }
     function onInput(){
         this.value = this.value.replace(/[^0-9.]/g, '');
@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
     inp2.addEventListener('input', onInput)
     operator.addEventListener('input', () => equals.disabled = false)
     equals.addEventListener('click', () => {
-        answer.innerHTML = operationMap[operator.value](inp1.value, inp2.value)
+        answer.innerHTML = operationMap[operator.value](Number(inp1.value), Number(inp2.value))
         equals.disabled = true
     })
 })
